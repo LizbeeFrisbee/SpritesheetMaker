@@ -44,10 +44,10 @@ namespace SpritesheetMaker
                 {
                     initialSize = aspectChecker.Size;
                     isInitialSizeSet = true;
-                    imageRes.Text = aspectChecker.Size.Height.ToString();
+                    imageRes.Text = aspectChecker.Size.Height.ToString() + "x" + aspectChecker.Size.Width.ToString();
                 }
 
-                if (aspectChecker.Width == aspectChecker.Height && aspectChecker.Size == initialSize)
+                if (aspectChecker.Size == initialSize)
                 {
                     // Read the files
                     foreach (String file in openFileDialog1.FileNames)
