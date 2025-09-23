@@ -1,9 +1,12 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Configuration;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -12,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace SpritesheetMaker
 {
@@ -20,6 +24,7 @@ namespace SpritesheetMaker
         private int imageScale;
         Size initialSize;
         bool isInitialSizeSet;
+        int iteration;
 
         private bool _Moving = false;
         private Point _Offset;
@@ -50,18 +55,30 @@ namespace SpritesheetMaker
 
                 if (aspectChecker.Size == initialSize)
                 {
-                    SpriteSheet = new Bitmap(aspectChecker.Width * openFileDialog1.FileNames.Length, aspectChecker.Height);
+                    SpriteSheet = new Bitmap(aspectChecker.Width * openFileDialog1.FileNames.Length, aspectChecker.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                    Color backColour = SpriteSheet.GetPixel(1, 1);
+                    SpriteSheet.MakeTransparent(backColour);
                     Graphics graphics = Graphics.FromImage(SpriteSheet);
+                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.CompositingMode = CompositingMode.SourceOver;
+                    graphics.SmoothingMode = SmoothingMode.None;
 
                     pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
-                    Console.WriteLine(SpriteSheet.Width);
+                    //Pen pen = new Pen(Color.Red, 2);
+                    //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
+                    //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
 
-                    graphics.DrawImage(aspectChecker, 0, 0);
+                    foreach (String file in openFileDialog1.FileNames) 
+                    {
+                        Image image = Image.FromFile(file);
+                        images.Add(image);
 
-                    Pen pen = new Pen(Color.Red, 2);
-                    graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
-                    graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width,0);
+                        graphics.DrawImage(aspectChecker, initialSize.Width * iteration, 0, initialSize.Width, initialSize.Height);
+                        iteration++;
+                    }
+                    
 
 
                     pictureBox1.Image = SpriteSheet;
@@ -142,16 +159,10 @@ namespace SpritesheetMaker
         private void SaveButton_Click(object sender, EventArgs e)
         {
             DialogResult sr = saveFileDialog1.ShowDialog();
-            Stream myStream;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    //Bitmap myBitmap = new Bitmap(flowLayoutPanel1.Width, flowLayoutPanel1.Height, myGraphics);
-                    myStream.Close();
-                }
+                SpriteSheet.Save(saveFileDialog1.FileName);
             }
         }
 

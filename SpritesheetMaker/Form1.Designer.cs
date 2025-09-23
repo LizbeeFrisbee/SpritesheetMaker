@@ -111,6 +111,7 @@
             // 
             // saveFileDialog1
             // 
+            this.saveFileDialog1.FileName = "Spritesheet";
             this.saveFileDialog1.Filter = "(*.png ; *.TIFF) | *.png ; *.TIFF";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
@@ -250,6 +251,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.pictureBox1.Location = new System.Drawing.Point(268, 57);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
