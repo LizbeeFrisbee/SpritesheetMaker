@@ -24,6 +24,7 @@ namespace SpritesheetMaker
         private bool _Moving = false;
         private Point _Offset;
         public List<Image> images = new List<Image>();
+        Bitmap SpriteSheet;
 
 
         public MainForm()
@@ -49,11 +50,21 @@ namespace SpritesheetMaker
 
                 if (aspectChecker.Size == initialSize)
                 {
-                    Bitmap SpriteSheet = new Bitmap(initialSize.Width * openFileDialog1.FileNames.Length,initialSize.Height);
+                    SpriteSheet = new Bitmap(aspectChecker.Width * openFileDialog1.FileNames.Length, aspectChecker.Height);
                     Graphics graphics = Graphics.FromImage(SpriteSheet);
 
+                    pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+                    Console.WriteLine(SpriteSheet.Width);
+
+                    graphics.DrawImage(aspectChecker, 0, 0);
+
+                    Pen pen = new Pen(Color.Red, 2);
+                    graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
+                    graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width,0);
 
 
+                    pictureBox1.Image = SpriteSheet;
 
                     // Read the files
                     //foreach (String file in openFileDialog1.FileNames)
@@ -111,20 +122,20 @@ namespace SpritesheetMaker
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
 
-            int currentValue = trackBar1.Value;
-            imageScale = currentValue;
+            //int currentValue = trackBar1.Value;
+            //imageScale = currentValue;
 
 
-            if (flowLayoutPanel1.HasChildren)
-            {
-                foreach (PictureBox tempBox in flowLayoutPanel1.Controls)
-                {
-                    tempBox.Width = initialSize.Width * imageScale;
-                    tempBox.Height = initialSize.Height * imageScale;
-                }
+            //if (flowLayoutPanel1.HasChildren)
+            //{
+            //    foreach (PictureBox tempBox in flowLayoutPanel1.Controls)
+            //    {
+            //        tempBox.Width = initialSize.Width * imageScale;
+            //        tempBox.Height = initialSize.Height * imageScale;
+            //    }
 
 
-            }
+            //}
         }
 
 
@@ -219,7 +230,8 @@ namespace SpritesheetMaker
         private void ResetButton_Click(object sender, EventArgs e)
         {
             images.Clear();
-            flowLayoutPanel1.Controls.Clear();
+            pictureBox1.Image = null;
+            SpriteSheet.Dispose();
             isInitialSizeSet = false;
         }
     }

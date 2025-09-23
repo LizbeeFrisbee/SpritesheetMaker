@@ -41,12 +41,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Exit = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new SpritesheetMaker.PictureBoxWithInterpolationMode();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -213,21 +214,6 @@
             this.Maximize.UseVisualStyleBackColor = false;
             this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.BackgroundImage = global::SpritesheetMaker.Properties.Resources.transparent_bigger;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(261, 57);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(985, 573);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -235,11 +221,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.imageRes);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.ResetButton);
             this.panel2.Controls.Add(this.SaveButton);
-            this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.zoomLevel);
             this.panel2.Controls.Add(this.trackBar1);
             this.panel2.Controls.Add(this.button1);
@@ -262,6 +248,16 @@
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pictureBox1.Location = new System.Drawing.Point(268, 57);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(978, 560);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +274,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,7 +284,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label zoomLevel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label1;
@@ -299,6 +295,7 @@
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button ResetButton;
+        private PictureBoxWithInterpolationMode pictureBox1;
     }
 }
 
