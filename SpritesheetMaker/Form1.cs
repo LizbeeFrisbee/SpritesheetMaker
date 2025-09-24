@@ -82,41 +82,6 @@ namespace SpritesheetMaker
 
 
                     pictureBox1.Image = SpriteSheet;
-
-                    // Read the files
-                    //foreach (String file in openFileDialog1.FileNames)
-                    //{
-                    //    // Add to Panel
-                    //    try
-                    //    {
-                    //        Image image = Image.FromFile(file);
-                    //        images.Add(image);
-                    //        PictureBoxWithInterpolationMode pictureBox = new PictureBoxWithInterpolationMode();
-                    //        pictureBox.Width = image.Width;
-                    //        pictureBox.Height = image.Height;
-                    //        pictureBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                    //        pictureBox.BackColor = Color.Transparent;
-                    //        pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                    //        pictureBox.Image = image;
-                    //        flowLayoutPanel1.Controls.Add(pictureBox);
-                    //    }
-                    //    catch (SecurityException ex)
-                    //    {
-                    //        // The user lacks appropriate permissions to read files, discover paths, etc.
-                    //        MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
-                    //            "Error message: " + ex.Message + "\n\n" +
-                    //            "Details (send to Support):\n\n" + ex.StackTrace
-                    //        );
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        // Could not load the image - probably related to Windows file system permissions.
-                    //        MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
-                    //            + ". You may not have permission to read the file, or " +
-                    //            "it may be corrupt.\n\nReported error: " + ex.Message);
-                    //    }
-                    //}
                 }
                 else
                 {
