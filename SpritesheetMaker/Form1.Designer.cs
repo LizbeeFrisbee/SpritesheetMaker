@@ -30,8 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.zoomLevel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,9 +40,9 @@
             this.Exit = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ResetButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new SpritesheetMaker.PictureBoxWithInterpolationMode();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.ResetButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,29 +70,6 @@
             this.openFileDialog1.Title = "Please select your image files";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // trackBar1
-            // 
-            this.trackBar1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.trackBar1.Location = new System.Drawing.Point(45, 116);
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(144, 45);
-            this.trackBar1.TabIndex = 4;
-            this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
-            // 
-            // zoomLevel
-            // 
-            this.zoomLevel.AutoSize = true;
-            this.zoomLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.zoomLevel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.zoomLevel.Location = new System.Drawing.Point(195, 116);
-            this.zoomLevel.Name = "zoomLevel";
-            this.zoomLevel.Size = new System.Drawing.Size(18, 20);
-            this.zoomLevel.TabIndex = 5;
-            this.zoomLevel.Text = "1";
-            // 
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -120,7 +95,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(42, 164);
+            this.label1.Location = new System.Drawing.Point(41, 188);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 20);
             this.label1.TabIndex = 8;
@@ -131,7 +106,7 @@
             this.imageRes.AutoSize = true;
             this.imageRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.imageRes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.imageRes.Location = new System.Drawing.Point(194, 164);
+            this.imageRes.Location = new System.Drawing.Point(191, 188);
             this.imageRes.Name = "imageRes";
             this.imageRes.Size = new System.Drawing.Size(19, 20);
             this.imageRes.TabIndex = 8;
@@ -222,18 +197,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.imageRes);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.ResetButton);
             this.panel2.Controls.Add(this.SaveButton);
-            this.panel2.Controls.Add(this.zoomLevel);
-            this.panel2.Controls.Add(this.trackBar1);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(1, 1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1262, 679);
             this.panel2.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pictureBox1.Location = new System.Drawing.Point(268, 57);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(978, 560);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // ResetButton
             // 
@@ -249,18 +236,13 @@
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // pictureBox1
+            // comboBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pictureBox1.Location = new System.Drawing.Point(268, 57);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(978, 560);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(45, 132);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(145, 21);
+            this.comboBox1.TabIndex = 11;
             // 
             // MainForm
             // 
@@ -273,7 +255,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -286,8 +267,6 @@
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label zoomLevel;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label1;
@@ -300,6 +279,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button ResetButton;
         private PictureBoxWithInterpolationMode pictureBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
