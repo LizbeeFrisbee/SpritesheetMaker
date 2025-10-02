@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -25,16 +26,27 @@ namespace SpritesheetMaker
         Size initialSize;
         bool isInitialSizeSet;
         int iteration;
+        Image aspectChecker;
+        bool imagesLoaded = false;
 
         private bool _Moving = false;
         private Point _Offset;
         public List<Image> images = new List<Image>();
         Bitmap SpriteSheet;
+        enum arrangementTypes
+        {
+            horizontal,
+            vertical,
+            box
+        }
+        arrangementTypes arrangementType = arrangementTypes.horizontal;
 
 
         public MainForm()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = ((int)arrangementType);
+
         }
 
         public void SelectImages_Click(object sender, EventArgs e)
@@ -43,9 +55,9 @@ namespace SpritesheetMaker
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                
 
-                Image aspectChecker = Image.FromFile(openFileDialog1.FileNames.ElementAt(0));
+
+                aspectChecker = Image.FromFile(openFileDialog1.FileNames.ElementAt(0));
                 if (!isInitialSizeSet)
                 {
                     initialSize = aspectChecker.Size;
@@ -55,39 +67,84 @@ namespace SpritesheetMaker
 
                 if (aspectChecker.Size == initialSize)
                 {
-                    SpriteSheet = new Bitmap(aspectChecker.Width * openFileDialog1.FileNames.Length, aspectChecker.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                    Color backColour = SpriteSheet.GetPixel(1, 1);
-                    SpriteSheet.MakeTransparent(backColour);
-                    Graphics graphics = Graphics.FromImage(SpriteSheet);
-                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                    graphics.CompositingQuality = CompositingQuality.HighQuality;
-                    graphics.CompositingMode = CompositingMode.SourceOver;
-                    graphics.SmoothingMode = SmoothingMode.None;
-
-                    pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-
-                    //Pen pen = new Pen(Color.Red, 2);
-                    //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
-                    //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
-
-                    foreach (String file in openFileDialog1.FileNames) 
-                    {
-                        Image image = Image.FromFile(file);
-                        images.Add(image);
-
-                        graphics.DrawImage(aspectChecker, initialSize.Width * iteration, 0, initialSize.Width, initialSize.Height);
-                        iteration++;
-                    }
-                    
-
-
-                    pictureBox1.Image = SpriteSheet;
+                    GenerateBitmap(arrangementType);
+                    imagesLoaded = true;
                 }
                 else
                 {
                     MessageBox.Show("Invalid image size.");
                 }
 
+            }
+        }
+
+        private void GenerateBitmap(arrangementTypes arrangementType)
+        {
+            switch (arrangementType)
+            {
+                case arrangementTypes.horizontal:
+                    {
+                        SpriteSheet = new Bitmap(aspectChecker.Width * openFileDialog1.FileNames.Length, aspectChecker.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        Color backColour = SpriteSheet.GetPixel(1, 1);
+                        SpriteSheet.MakeTransparent(backColour);
+                        Graphics graphics = Graphics.FromImage(SpriteSheet);
+                        graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
+                        graphics.CompositingMode = CompositingMode.SourceOver;
+                        graphics.SmoothingMode = SmoothingMode.None;
+
+                        pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+                        //Pen pen = new Pen(Color.Red, 2);
+                        //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
+                        //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
+
+                        foreach (String file in openFileDialog1.FileNames)
+                        {
+                            Image image = Image.FromFile(file);
+                            images.Add(image);
+
+                            graphics.DrawImage(images.ElementAt(iteration), initialSize.Width * iteration, 0, initialSize.Width, initialSize.Height);
+                            iteration++;
+                        }
+
+
+                        iteration = 0;
+                        pictureBox1.Image = SpriteSheet;
+                    }
+                    break;
+
+                case arrangementTypes.vertical:
+                    {
+                        SpriteSheet = new Bitmap(aspectChecker.Width, aspectChecker.Height * openFileDialog1.FileNames.Length, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        Color backColour = SpriteSheet.GetPixel(1, 1);
+                        SpriteSheet.MakeTransparent(backColour);
+                        Graphics graphics = Graphics.FromImage(SpriteSheet);
+                        graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
+                        graphics.CompositingMode = CompositingMode.SourceOver;
+                        graphics.SmoothingMode = SmoothingMode.None;
+
+                        pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+                        //Pen pen = new Pen(Color.Red, 2);
+                        //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
+                        //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
+
+                        foreach (String file in openFileDialog1.FileNames)
+                        {
+                            Image image = Image.FromFile(file);
+                            images.Add(image);
+
+                            graphics.DrawImage(images.ElementAt(iteration), 0, initialSize.Height * iteration, initialSize.Width, initialSize.Height);
+                            iteration++;
+                        }
+
+
+                        iteration = 0;
+                        pictureBox1.Image = SpriteSheet;
+                    }
+                    break;
             }
         }
 
@@ -98,7 +155,7 @@ namespace SpritesheetMaker
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            zoomLevel.Text = trackBar1.Value.ToString();
+            
         }
 
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
@@ -209,6 +266,24 @@ namespace SpritesheetMaker
             pictureBox1.Image = null;
             SpriteSheet.Dispose();
             isInitialSizeSet = false;
+            imagesLoaded = false;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0: arrangementType = arrangementTypes.horizontal; break;
+
+                case 1: arrangementType = arrangementTypes.vertical; break;
+
+                case 2: arrangementType = arrangementTypes.box; break;
+            }
+
+            if (imagesLoaded)
+            {
+                GenerateBitmap(arrangementType);
+            }
         }
     }
 }
