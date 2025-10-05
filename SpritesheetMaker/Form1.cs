@@ -149,8 +149,35 @@ namespace SpritesheetMaker
 
                 case arrangementTypes.box:
                     {
-                        break;
+                        SpriteSheet = new Bitmap(aspectChecker.Width, aspectChecker.Height * openFileDialog1.FileNames.Length, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        Color backColour = SpriteSheet.GetPixel(1, 1);
+                        SpriteSheet.MakeTransparent(backColour);
+                        Graphics graphics = Graphics.FromImage(SpriteSheet);
+                        graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                        graphics.CompositingQuality = CompositingQuality.HighQuality;
+                        graphics.CompositingMode = CompositingMode.SourceOver;
+                        graphics.SmoothingMode = SmoothingMode.None;
+
+                        pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+                        //Pen pen = new Pen(Color.Red, 2);
+                        //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
+                        //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
+
+                        foreach (String file in openFileDialog1.FileNames)
+                        {
+                            Image image = Image.FromFile(file);
+                            images.Add(image);
+
+                            graphics.DrawImage(images.ElementAt(iteration), 0, initialSize.Height * iteration, initialSize.Width, initialSize.Height);
+                            iteration++;
+                        }
+
+
+                        iteration = 0;
+                        pictureBox1.Image = SpriteSheet;
                     }
+                    break;
             }
         }
 
