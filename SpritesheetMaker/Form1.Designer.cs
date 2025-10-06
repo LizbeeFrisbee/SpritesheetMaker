@@ -41,8 +41,8 @@
             this.Maximize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new SpritesheetMaker.PictureBoxWithInterpolationMode();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new SpritesheetMaker.PictureBoxWithInterpolationMode();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,9 +54,10 @@
             this.button1.BackColor = System.Drawing.Color.GhostWhite;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(45, 57);
+            this.button1.Location = new System.Drawing.Point(60, 70);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 34);
+            this.button1.Size = new System.Drawing.Size(193, 42);
             this.button1.TabIndex = 1;
             this.button1.Text = "Load Images";
             this.button1.UseVisualStyleBackColor = false;
@@ -76,9 +77,10 @@
             this.SaveButton.BackColor = System.Drawing.Color.GhostWhite;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SaveButton.Location = new System.Drawing.Point(1102, 636);
+            this.SaveButton.Location = new System.Drawing.Point(986, 537);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(144, 32);
+            this.SaveButton.Size = new System.Drawing.Size(192, 39);
             this.SaveButton.TabIndex = 7;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -95,9 +97,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(41, 188);
+            this.label1.Location = new System.Drawing.Point(55, 231);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 20);
+            this.label1.Size = new System.Drawing.Size(186, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Current Image Size:";
             // 
@@ -106,9 +109,10 @@
             this.imageRes.AutoSize = true;
             this.imageRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.imageRes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.imageRes.Location = new System.Drawing.Point(191, 188);
+            this.imageRes.Location = new System.Drawing.Point(255, 231);
+            this.imageRes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.imageRes.Name = "imageRes";
-            this.imageRes.Size = new System.Drawing.Size(19, 20);
+            this.imageRes.Size = new System.Drawing.Size(26, 25);
             this.imageRes.TabIndex = 8;
             this.imageRes.Text = "--";
             this.imageRes.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -124,9 +128,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Exit);
             this.panel1.Controls.Add(this.Maximize);
-            this.panel1.Location = new System.Drawing.Point(12, 1);
+            this.panel1.Location = new System.Drawing.Point(16, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1240, 34);
+            this.panel1.Size = new System.Drawing.Size(1170, 41);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
@@ -139,10 +144,10 @@
             this.Minimize.BackColor = System.Drawing.Color.SlateGray;
             this.Minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.Minimize.ForeColor = System.Drawing.SystemColors.Control;
-            this.Minimize.Location = new System.Drawing.Point(1140, 1);
+            this.Minimize.Location = new System.Drawing.Point(1037, 1);
             this.Minimize.Margin = new System.Windows.Forms.Padding(0);
             this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(32, 31);
+            this.Minimize.Size = new System.Drawing.Size(43, 38);
             this.Minimize.TabIndex = 1;
             this.Minimize.Text = "-";
             this.Minimize.UseVisualStyleBackColor = false;
@@ -154,9 +159,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(3, 4);
+            this.label2.Location = new System.Drawing.Point(4, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 25);
+            this.label2.Size = new System.Drawing.Size(218, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Spritesheet Maker";
             // 
@@ -166,10 +172,10 @@
             this.Exit.BackColor = System.Drawing.Color.SlateGray;
             this.Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.Exit.ForeColor = System.Drawing.SystemColors.Control;
-            this.Exit.Location = new System.Drawing.Point(1204, 1);
+            this.Exit.Location = new System.Drawing.Point(1122, 1);
             this.Exit.Margin = new System.Windows.Forms.Padding(0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(32, 31);
+            this.Exit.Size = new System.Drawing.Size(43, 38);
             this.Exit.TabIndex = 1;
             this.Exit.Text = "X";
             this.Exit.UseVisualStyleBackColor = false;
@@ -181,10 +187,10 @@
             this.Maximize.BackColor = System.Drawing.Color.SlateGray;
             this.Maximize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.Maximize.ForeColor = System.Drawing.SystemColors.Control;
-            this.Maximize.Location = new System.Drawing.Point(1172, 1);
+            this.Maximize.Location = new System.Drawing.Point(1080, 1);
             this.Maximize.Margin = new System.Windows.Forms.Padding(0);
             this.Maximize.Name = "Maximize";
-            this.Maximize.Size = new System.Drawing.Size(32, 31);
+            this.Maximize.Size = new System.Drawing.Size(43, 38);
             this.Maximize.TabIndex = 1;
             this.Maximize.Text = "▢";
             this.Maximize.UseVisualStyleBackColor = false;
@@ -205,36 +211,25 @@
             this.panel2.Controls.Add(this.SaveButton);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1262, 679);
+            this.panel2.Size = new System.Drawing.Size(1199, 589);
             this.panel2.TabIndex = 10;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 13;
+            this.comboBox1.ItemHeight = 16;
             this.comboBox1.Items.AddRange(new object[] {
             "Horizontal",
             "Vertical",
             "Box"});
-            this.comboBox1.Location = new System.Drawing.Point(45, 132);
+            this.comboBox1.Location = new System.Drawing.Point(60, 162);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 21);
+            this.comboBox1.Size = new System.Drawing.Size(192, 24);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pictureBox1.Location = new System.Drawing.Point(268, 57);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(978, 560);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
             // 
             // ResetButton
             // 
@@ -242,23 +237,41 @@
             this.ResetButton.BackColor = System.Drawing.Color.GhostWhite;
             this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ResetButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ResetButton.Location = new System.Drawing.Point(952, 636);
+            this.ResetButton.Location = new System.Drawing.Point(786, 537);
+            this.ResetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(144, 32);
+            this.ResetButton.Size = new System.Drawing.Size(192, 39);
             this.ResetButton.TabIndex = 7;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pictureBox1.Location = new System.Drawing.Point(357, 70);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(821, 446);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumBlue;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1202, 593);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
