@@ -149,7 +149,7 @@ namespace SpritesheetMaker
 
                 case arrangementTypes.box:
                     {
-                        SpriteSheet = new Bitmap(aspectChecker.Width, aspectChecker.Height * openFileDialog1.FileNames.Length, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        SpriteSheet = new Bitmap(aspectChecker.Width * ((openFileDialog1.FileNames.Length/2) + (openFileDialog1.FileNames.Length%2)), aspectChecker.Height * (openFileDialog1.FileNames.Length/2), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
                         Color backColour = SpriteSheet.GetPixel(1, 1);
                         SpriteSheet.MakeTransparent(backColour);
                         Graphics graphics = Graphics.FromImage(SpriteSheet);
@@ -164,13 +164,20 @@ namespace SpritesheetMaker
                         //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
                         //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
 
+                        int currentRow = 0;
+
                         foreach (String file in openFileDialog1.FileNames)
                         {
-                            Image image = Image.FromFile(file);
-                            images.Add(image);
 
-                            graphics.DrawImage(images.ElementAt(iteration), 0, initialSize.Height * iteration, initialSize.Width, initialSize.Height);
-                            iteration++;
+                            while (currentRow++ < openFileDialog1.FileNames.Length /2)
+                            {
+                                Image image = Image.FromFile(file);
+                                images.Add(image);
+
+                                graphics.DrawImage(images.ElementAt(iteration), 0, initialSize.Height * iteration, initialSize.Width, initialSize.Height);
+                                iteration++;
+                            }
+                                
                         }
 
 
