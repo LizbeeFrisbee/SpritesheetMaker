@@ -149,7 +149,10 @@ namespace SpritesheetMaker
 
                 case arrangementTypes.box:
                     {
-                        SpriteSheet = new Bitmap(aspectChecker.Width * ((openFileDialog1.FileNames.Length/2) + (openFileDialog1.FileNames.Length%2)), aspectChecker.Height * (openFileDialog1.FileNames.Length/2), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        int bmBoxWidth = aspectChecker.Width * ((openFileDialog1.FileNames.Length / 2) + (openFileDialog1.FileNames.Length % 2));
+                        int bmBoxHeight = aspectChecker.Height * ((openFileDialog1.FileNames.Length / 2));
+
+                        SpriteSheet = new Bitmap(bmBoxWidth, bmBoxHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
                         Color backColour = SpriteSheet.GetPixel(1, 1);
                         SpriteSheet.MakeTransparent(backColour);
                         Graphics graphics = Graphics.FromImage(SpriteSheet);
@@ -160,9 +163,9 @@ namespace SpritesheetMaker
 
                         pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
-                        //Pen pen = new Pen(Color.Red, 2);
-                        //graphics.DrawLine(pen, 0, 0, aspectChecker.Width, aspectChecker.Height);
-                        //graphics.DrawLine(pen, 0, aspectChecker.Height, aspectChecker.Width, 0);
+                        Pen pen = new Pen(Color.Red, 2);
+                        graphics.DrawLine(pen, 0, 0, bmBoxWidth, bmBoxHeight);
+                        graphics.DrawLine(pen, 0, bmBoxHeight, bmBoxWidth, 0);
 
                         int currentRow = 0;
 
