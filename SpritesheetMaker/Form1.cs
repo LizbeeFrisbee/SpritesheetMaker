@@ -149,8 +149,8 @@ namespace SpritesheetMaker
 
                 case arrangementTypes.box:
                     {
-                        int bmBoxWidth = aspectChecker.Width * ((openFileDialog1.FileNames.Length / 2) + (openFileDialog1.FileNames.Length % 2));
-                        int bmBoxHeight = aspectChecker.Height * ((openFileDialog1.FileNames.Length / 2));
+                        int bmBoxWidth =  openFileDialog1.FileNames.Length < 9 && openFileDialog1.FileNames.Length > 4 ? 3 * aspectChecker.Width : aspectChecker.Width * ((int)Math.Sqrt(Convert.ToDouble(openFileDialog1.FileNames.Length)));
+                        int bmBoxHeight = bmBoxWidth;
 
                         SpriteSheet = new Bitmap(bmBoxWidth, bmBoxHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
                         Color backColour = SpriteSheet.GetPixel(1, 1);
